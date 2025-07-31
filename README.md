@@ -45,9 +45,9 @@ To ensure consistency across the team and enable smooth pull requests, follow th
 
 ### Getting Started
 
-1. **Install dependencies**
+1. **Install dependencies and build assets**
    ```bash
-   npm install
+   npm install && npm run dev
    ```
 
    > **Note**: Composer is optional. The PHP development tools (PHPCS, etc.) are only needed if you're writing PHP code. Local by Flywheel already provides PHP and WordPress core.
