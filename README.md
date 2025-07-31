@@ -31,6 +31,7 @@ To ensure consistency across the team and enable smooth pull requests, follow th
    - **Production**: https://legacyfit.flywheelsites.com/
    - **Staging**: https://legacyfit.flywheelstaging.com/
    - WordPress Username: `legacyfit`
+   - Password has been shared with you privately
 
 ### Repository Setup
 
@@ -42,6 +43,7 @@ To ensure consistency across the team and enable smooth pull requests, follow th
 2. **Theme Location**
    - All theme code is located in: `/Users/yourusername/code/legacy/app/public/wp-content/themes/legacy`
    - Only the theme folder contents are tracked in Git
+   - You should open your IDE in the theme directory, not the project root
 
 ### Getting Started
 
