@@ -2,13 +2,13 @@
 
 A custom WordPress theme built with the [_tw (Underscore Tailwind) framework](https://underscoretw.com/), featuring modern development tools and Tailwind CSS v4.
 
-> **⚠️ Important: Git Repository Location**  
-> The `.git` directory is located in `/app/public/wp-content/themes/legacy/` only.  
-> **Always run Git commands from the theme directory**, not from the project root.  
+> **⚠️ Important: Git Repository Location**
+> The `.git` directory is located in `/app/public/wp-content/themes/legacy/` only.
+> **Always run Git commands from the theme directory**, not from the project root.
 > See [Local's documentation on developing with Git](https://localwp.com/help-docs/advanced/developing-with-local-and-github/#creating-a-new-git-repository) for more details.
 
-> **📋 Project Management**  
-> All tasks, features, and bugs are tracked in our [Notion project board](https://www.notion.so/Legacy-Fit-Web-development-2419225c522d80529ec5d0615dff207d).  
+> **📋 Project Management**
+> All tasks, features, and bugs are tracked in our [Notion project board](https://www.notion.so/Legacy-Fit-Web-development-2419225c522d80529ec5d0615dff207d).
 > Check here for priorities and task assignments before starting work.
 
 ## Development environment setup
@@ -49,7 +49,7 @@ To ensure consistency across the team and enable smooth pull requests, follow th
    ```bash
    npm install
    ```
-   
+
    > **Note**: Composer is optional. The PHP development tools (PHPCS, etc.) are only needed if you're writing PHP code. Local by Flywheel already provides PHP and WordPress core.
 
 2. **Start development**
@@ -129,13 +129,6 @@ While ACF fields are version controlled, some WordPress data still requires data
 | **Theme Settings** | ❌ No |
 | **Custom Post Types** | ❌ No |
 | **Taxonomies** | ❌ No |
-
-### Minimizing Database Dependencies
-
-1. **Use ACF JSON Sync** ✅ (Already implemented)
-2. **Define reusable content as theme options** rather than page content
-3. **Use code-based configuration** for post types, taxonomies, and menus where possible
-4. **Document any required manual setup** for new environments
 
 ### Recommended Sync Workflow
 
