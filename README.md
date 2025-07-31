@@ -111,7 +111,7 @@ legacy/
 
 1. Run `npm run bundle` to create `legacy.zip`
 2. Ensure all changes are committed and pushed
-3. Upload through Flywheel dashboard: Push to "An existing site" > Legacy > Environment type: Production > What files should we include? > Files: select files > All modified files > Push
+3. Upload through Flywheel dashboard: Push to An existing site > Legacy > Environment type: Production > What files should we include? > Files: select files > All modified files > Push
 4. If you made a database change, click "Database" too and warn the team that they should pull db changes.
 
 ## Have I made a database change? When database sync is required
