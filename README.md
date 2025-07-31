@@ -7,6 +7,10 @@ A custom WordPress theme built with the [_tw (Underscore Tailwind) framework](ht
 > **Always run Git commands from the theme directory**, not from the project root.  
 > See [Local's documentation on developing with Git](https://localwp.com/help-docs/advanced/developing-with-local-and-github/#creating-a-new-git-repository) for more details.
 
+> **📋 Project Management**  
+> All tasks, features, and bugs are tracked in our [Notion project board](https://www.notion.so/Legacy-Fit-Web-development-2419225c522d80529ec5d0615dff207d).  
+> Check here for priorities and task assignments before starting work.
+
 ## Development environment setup
 
 To ensure consistency across the team and enable smooth pull requests, follow these setup instructions:
