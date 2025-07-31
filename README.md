@@ -4,7 +4,8 @@ A custom WordPress theme built with the [_tw (Underscore Tailwind) framework](ht
 
 > **⚠️ Important: Git Repository Location**  
 > The `.git` directory is located in `/app/public/wp-content/themes/legacy/` only.  
-> **Always run Git commands from the theme directory**, not from the project root.
+> **Always run Git commands from the theme directory**, not from the project root.  
+> See [Local's documentation on developing with Git](https://localwp.com/help-docs/advanced/developing-with-local-and-github/#creating-a-new-git-repository) for more details.
 
 ## Development environment setup
 
