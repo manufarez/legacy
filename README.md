@@ -113,11 +113,9 @@ legacy/
 2. Run `npm run bundle` to create `legacy.zip`
 3. Upload through WordPress admin or Flywheel dashboard
 
-## Database Synchronization Guide
+## When database sync is required
 
-### When Database Sync is Required
-
-While ACF fields are version controlled, some WordPress data still requires database synchronization between environments:
+While some data is version controlled via Git, some WordPress data still requires database synchronization between environments:
 
 | Data Type | Requires DB Sync |
 |-----------|------------------|
@@ -130,16 +128,7 @@ While ACF fields are version controlled, some WordPress data still requires data
 | **Custom Post Types** | ❌ No |
 | **Taxonomies** | ❌ No |
 
-### Recommended Sync Workflow
-
-1. **Development → Staging**:
-   - Use migration plugins (e.g., WP Migrate DB Pro)
-   - Or manually export/import content as needed
-
-2. **Staging → Production**:
-   - Test thoroughly on staging first
-   - Use same migration method for consistency
-   - Always backup production before syncing
+Any time a data change requires a database sync, warn the team and ask for pull after the sync is complete.
 
 ## Theme Foundation
 
