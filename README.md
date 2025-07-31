@@ -109,11 +109,12 @@ legacy/
 
 ## Deployment
 
-1. Ensure all changes are committed and pushed
-2. Run `npm run bundle` to create `legacy.zip`
-3. Upload through WordPress admin or Flywheel dashboard
+1. Run `npm run bundle` to create `legacy.zip`
+2. Ensure all changes are committed and pushed
+3. Upload through Flywheel dashboard: Push to "An existing site" > Legacy > Environment type: Production > What files should we include? > Files: select files > All modified files > Push
+4. If you made a database change, click "Database" too and warn the team that they should pull db changes.
 
-## When database sync is required
+## Have I made a database change? When database sync is required
 
 While some data is version controlled via Git, some WordPress data still requires database synchronization between environments:
 
@@ -124,11 +125,12 @@ While some data is version controlled via Git, some WordPress data still require
 | **Menu Structure** | ✅ Yes |
 | **Plugin Settings** | ✅ Yes |
 | **ACF Field Groups** | ❌ No |
-| **Theme Settings** | ❌ No |
+| **Theme Settings and styling** | ❌ No |
 | **Custom Post Types** | ❌ No |
 | **Taxonomies** | ❌ No |
+| **Custom Tailwind CSS** | ❌ No |
 
-Any time a data change requires a database sync, warn the team and ask for pull after the sync is complete.
+Any time a data change requires a database sync, push your code **with Database checkbox ticked** and warn the team and ask for pull after the sync is complete.
 
 ## Theme Foundation
 
