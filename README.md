@@ -41,13 +41,20 @@ To ensure consistency across the team and enable smooth pull requests, follow th
 
 ### Getting Started
 
-1. **Start development**
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
+   
+   > **Note**: Composer is optional. The PHP development tools (PHPCS, etc.) are only needed if you're writing PHP code. Local by Flywheel already provides PHP and WordPress core.
+
+2. **Start development**
    ```bash
    # Run this before coding to enable Tailwind CSS hot reloading
    npm run watch
    ```
 
-2. **Build for production**
+3. **Build for production**
    ```bash
    # Run this before deploying to create optimized assets
    npm run bundle
