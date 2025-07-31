@@ -1,63 +1,181 @@
-legacy
-======
+# Legacy WordPress Theme
 
-A custom theme based on \_tw
+A custom WordPress theme built with the [_tw (Underscore Tailwind) framework](https://underscoretw.com/), featuring modern development tools and Tailwind CSS v4.
 
-## Quickstart
+> **⚠️ Important: Git Repository Location**  
+> The `.git` directory is located in `/app/public/wp-content/themes/legacy/` only.  
+> **Always run Git commands from the theme directory**, not from the project root.
 
-### Installation
+## Development environment setup
 
-1. Move this folder to `wp-content/themes` in your local development environment
-2. Run `npm install && npm run dev` in this folder
-3. Activate this theme in your local WordPress installation
+To ensure consistency across the team and enable smooth pull requests, follow these setup instructions:
 
-Using WordPress Multisite? Don’t forget that your theme must first be enabled via the Network Admin in order to be available for activation on a network site.
+### Prerequisites
 
-### Development
+1. **Install Local by Flywheel**
+   - Download and install the latest version from [localwp.com](https://localwp.com/)
+   - Connect with your Flywheel account
 
-4. Run `npm run watch`
-5. Add [Tailwind utility classes](https://tailwindcss.com/docs/utility-first) with abandon
+2. **Flywheel Account Access**
+   - Organization: Neurotic
+   - Project: Legacy
+   - Access WordPress admin through Flywheel dashboard via dedicated button without username/password
+   - Admin access: [app.getflywheel.com/org/neurotic/legacy/](https://app.getflywheel.com/org/neurotic/legacy/)
 
-### Deployment
+3. **Environment URLs**
+   - **Production**: https://legacyfit.flywheelsites.com/
+   - **Staging**: https://legacyfit.flywheelstaging.com/
+   - WordPress Username: `legacyfit`
 
-6. Run `npm run bundle`
-7. Upload the resulting zip file to your site using the “Upload Theme” button on the “Add Themes” administration page
+### Repository Setup
 
-Or [deploy with the tool of your choice](https://underscoretw.com/docs/deployment/#h-other-deployment-options)!
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/manufarez/legacy
+   ```
 
-## Full Documentation
+2. **Theme Location**
+   - All theme code is located in: `/Users/yourusername/code/legacy/app/public/wp-content/themes/legacy`
+   - Only the theme folder contents are tracked in Git
 
-### Fundamentals
+### Getting Started
 
-* [Installation](https://underscoretw.com/docs/installation/)  
-  Generate your custom theme, install it in WordPress and run your first Tailwind builds
-* [Development](https://underscoretw.com/docs/development/)  
-  Watch for changes, build for production and learn more about how _tw, WordPress and Tailwind work together
-* [Deployment](https://underscoretw.com/docs/deployment/)  
-  Share your new WordPress theme with the world
-* [Troubleshooting](https://underscoretw.com/docs/troubleshooting/)  
-  Find solutions to potential issues and answers to frequently asked questions
+1. **Start development**
+   ```bash
+   # Run this before coding to enable Tailwind CSS hot reloading
+   npm run watch
+   ```
 
-### In Depth
+2. **Build for production**
+   ```bash
+   # Run this before deploying to create optimized assets
+   npm run bundle
+   ```
 
-* [Using Tailwind Typography](https://underscoretw.com/docs/tailwind-typography/)  
-  Customize front-end and back-end typographic styles
-* [JavaScript Bundling with esbuild](https://underscoretw.com/docs/esbuild/)  
-  Install and bundle JavaScript libraries (very quickly)
-* [Adding custom fonts](https://underscoretw.com/docs/custom-fonts/)
-  Host your fonts yourself or use a third party—and then add those fonts to your WordPress theme
-* [Linting and Code Formatting](https://underscoretw.com/docs/linting-code-formatting/)  
-  Catch bugs and stop thinking about formatting
-* [Keeping your theme up-to-date](https://underscoretw.com/docs/updating/)
-  How to update (and whether or not you should)
+## Development Workflow
 
-### Extras
+### Available Commands
 
-* [On Tailwind and WordPress](https://underscoretw.com/docs/wordpress-tailwind/)  
-  Understand how WordPress and Tailwind work together
-* [Styling HTML from outside the theme](https://underscoretw.com/docs/styling-html-from-outside-the-theme/)
-  Work with WordPress core, plugins and JavaScript libraries
-* [Managing Styles for Custom Blocks](https://underscoretw.com/docs/custom-blocks/)  
-  Learn strategies for using Tailwind in theme-specific custom blocks
-* [Setting Up Browsersync](https://underscoretw.com/docs/browsersync/)  
-  Add live reloads and synchronized cross-device testing to your workflow
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Build assets for development |
+| `npm run watch` | Watch files and rebuild on changes |
+| `npm run prod` | Build optimized assets for production |
+| `npm run bundle` | Create deployable theme zip file |
+| `npm run lint` | Check JavaScript code quality |
+| `npm run lint-fix` | Auto-fix JavaScript issues |
+
+### Code Standards
+
+- **JavaScript**: ESLint with WordPress and Prettier standards
+- **PHP**: WordPress Coding Standards via PHPCS
+- **CSS**: Tailwind CSS with custom design tokens
+- All code must pass linting before committing
+
+### File Structure
+
+```
+legacy/
+├── theme/              # WordPress template files
+│   ├── functions.php   # Theme functionality
+│   ├── style.css      # Compiled CSS (don't edit directly)
+│   ├── js/            # Compiled JavaScript (don't edit directly)
+│   ├── acf-json/      # ACF field group JSON files (version controlled)
+│   └── *.php          # Template files
+├── javascript/         # Source JavaScript files (edit these)
+├── tailwind/          # Tailwind CSS source files
+├── package.json       # Node dependencies and scripts
+└── composer.json      # PHP dependencies
+```
+
+### Important Notes
+
+1. **Always run `npm run watch` during development** - This enables Tailwind CSS compilation and JavaScript bundling
+2. **Edit source files only** - Never edit files in `theme/js/` or `theme/style.css` directly
+3. **Test before deploying** - Run `npm run prod` locally and test thoroughly
+4. **Use the Legacy prefix** - All custom functions and classes should use the `legacy_` prefix
+
+## Deployment
+
+1. Ensure all changes are committed and pushed
+2. Run `npm run bundle` to create `legacy.zip`
+3. Upload through WordPress admin or Flywheel dashboard
+
+## Database Synchronization Guide
+
+### When Database Sync is Required
+
+While ACF fields are version controlled, some WordPress data still requires database synchronization between environments:
+
+| Data Type | Requires DB Sync |
+|-----------|------------------|
+| **Pages & Posts** | ✅ Yes |
+| **Media Files** | ✅ Yes |
+| **Menu Structure** | ✅ Yes |
+| **Plugin Settings** | ✅ Yes |
+| **ACF Field Groups** | ❌ No |
+| **Theme Settings** | ❌ No |
+| **Custom Post Types** | ❌ No |
+| **Taxonomies** | ❌ No |
+
+### Minimizing Database Dependencies
+
+1. **Use ACF JSON Sync** ✅ (Already implemented)
+2. **Define reusable content as theme options** rather than page content
+3. **Use code-based configuration** for post types, taxonomies, and menus where possible
+4. **Document any required manual setup** for new environments
+
+### Recommended Sync Workflow
+
+1. **Development → Staging**:
+   - Use migration plugins (e.g., WP Migrate DB Pro)
+   - Or manually export/import content as needed
+
+2. **Staging → Production**:
+   - Test thoroughly on staging first
+   - Use same migration method for consistency
+   - Always backup production before syncing
+
+## Theme Foundation
+
+This theme is built on [_tw (Underscore Tailwind)](https://underscoretw.com/docs/), a WordPress starter theme that combines:
+- Underscores (_s) WordPress starter theme
+- Tailwind CSS for utility-first styling
+- Modern build tools for optimal performance
+
+## Contributing
+
+1. Create a feature branch from `main`
+2. Make your changes
+3. Ensure all linting passes
+4. Test thoroughly in local environment
+5. Create a pull request with clear description
+
+## Advanced Custom Fields (ACF) Workflow
+
+### ACF JSON Sync
+
+This theme uses ACF's JSON sync feature to version control field configurations:
+
+1. **Automatic Sync**: Field groups are automatically saved as JSON files in `theme/acf-json/`
+2. **Version Control**: All ACF field configurations are tracked in Git
+3. **No Database Sync Needed**: Field groups sync automatically across environments
+
+### Working with ACF
+
+1. **Creating/Editing Fields**:
+   - Make changes in WordPress admin as normal
+   - JSON files are automatically created/updated in `theme/acf-json/`
+   - Commit these JSON files to version control
+
+2. **Syncing Fields**:
+   - On new environments, fields automatically load from JSON
+   - If you see "Sync Available" in ACF admin, click to sync from JSON
+   - This ensures database matches the JSON files
+
+## Support
+
+For theme-specific questions or issues, please refer to:
+- [_tw Documentation](https://underscoretw.com/docs/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- Project repository: [github.com/manufarez/legacy](https://github.com/manufarez/legacy)

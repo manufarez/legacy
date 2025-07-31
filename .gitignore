@@ -15,3 +15,8 @@ legacy.zip
 
 # Ignore .DS_Store files from macOS:
 .DS_Store
+
+# ACF JSON sync files - track these for version control:
+!theme/acf-json/*.json
+# But ignore the index.php security file:
+theme/acf-json/index.php

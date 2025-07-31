@@ -212,6 +212,43 @@ function legacy_modify_heading_levels( $args, $block_type ) {
 add_filter( 'register_block_type_args', 'legacy_modify_heading_levels', 10, 2 );
 
 /**
+ * ACF JSON sync configuration.
+ *
+ * Saves ACF field groups as JSON files for version control.
+ * This allows field configurations to be tracked in Git and
+ * automatically synced across environments without database imports.
+ */
+if ( class_exists( 'ACF' ) ) {
+	/**
+	 * Set custom ACF JSON save path.
+	 *
+	 * @param string $path Default save path.
+	 * @return string Modified save path.
+	 */
+	function legacy_acf_json_save_point( $path ) {
+		return get_template_directory() . '/acf-json';
+	}
+	add_filter( 'acf/settings/save_json', 'legacy_acf_json_save_point' );
+
+	/**
+	 * Set custom ACF JSON load path.
+	 *
+	 * @param array $paths Default load paths.
+	 * @return array Modified load paths.
+	 */
+	function legacy_acf_json_load_point( $paths ) {
+		// Remove default path.
+		unset( $paths[0] );
+
+		// Add custom path.
+		$paths[] = get_template_directory() . '/acf-json';
+
+		return $paths;
+	}
+	add_filter( 'acf/settings/load_json', 'legacy_acf_json_load_point' );
+}
+
+/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
