@@ -147,6 +147,11 @@ add_action( 'widgets_init', 'legacy_widgets_init' );
 function legacy_scripts() {
 	wp_enqueue_style( 'legacy-style', get_stylesheet_uri(), array(), LEGACY_VERSION );
 	wp_enqueue_script( 'legacy-script', get_template_directory_uri() . '/js/script.min.js', array(), LEGACY_VERSION, true );
+	
+	// Form handler for landing page
+	if ( is_page_template( 'landing.php' ) ) {
+		wp_enqueue_script( 'legacy-form-handler', get_template_directory_uri() . '/js/form-handler.min.js', array(), LEGACY_VERSION, true );
+	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -257,3 +262,31 @@ require get_template_directory() . '/inc/template-tags.php';
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Add Facebook Pixel code to the head.
+ */
+function legacy_add_facebook_pixel() {
+  ?>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1089983753186096');
+  fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1089983753186096&ev=PageView&noscript=1"
+    />
+  </noscript>
+  <!-- End Meta Pixel Code -->
+  <?php
+}
+add_action( 'wp_head', 'legacy_add_facebook_pixel' );
